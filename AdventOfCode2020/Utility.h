@@ -3,11 +3,11 @@
 #include <vector>
 using namespace std;
 
-class Utility
+static class Utility
 {
 	public:
 
-		int binary_search_find_index(vector<int> v, int target) {
+		static int binary_search_find_index(vector<int> v, int target) {
 			auto it = lower_bound(v.begin(), v.end(), target);
 			if (it == v.end() || *it != target) {
 				return -1;
@@ -16,6 +16,16 @@ class Utility
 				size_t index = distance(v.begin(), it);
 				return index;
 			}
+		}
+
+		static vector<string> split(string value, char delimiter) {
+			std::size_t delimeterIndex = value.find_first_of(delimiter);
+			auto leftSide = value.substr(0, delimeterIndex);
+			auto rightSide = value.substr(delimeterIndex+1, value.length());
+			vector<string> result;
+			result.push_back(leftSide);
+			result.push_back(rightSide);
+			return result;
 		}
 		
 		

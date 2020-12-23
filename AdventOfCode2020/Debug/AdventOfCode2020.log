@@ -1,4 +1,8 @@
-﻿  day2.cpp
+﻿  Day2.cpp
+C:\Users\SilvioCarrera\Documents\Cpp Projects\adventOfCode2020\AdventOfCode2020\Utility.h(32,2): warning C4091: 'static ': ignored on left of 'Utility' when no variable is declared
   main.cpp
+C:\Users\SilvioCarrera\Documents\Cpp Projects\adventOfCode2020\AdventOfCode2020\Utility.h(32,2): warning C4091: 'static ': ignored on left of 'Utility' when no variable is declared
   Generating Code...
-  AdventOfCode2020.vcxproj -> C:\Users\SilvioCarrera\Documents\Cpp Projects\AdventOfCode2020\Debug\AdventOfCode2020.exe
+  LINK : C:\Users\SilvioCarrera\Documents\Cpp Projects\adventOfCode2020\Debug\AdventOfCode2020.exe not found or not built by the last incremental link; performing full link
+main.obj : error LNK2005: "class std::basic_ostream<char,struct std::char_traits<char> > & __cdecl operator<<(class std::basic_ostream<char,struct std::char_traits<char> > &,class std::vector<int,class std::allocator<int> > const &)" (??6@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@AAV01@ABV?$vector@HV?$allocator@H@std@@@1@@Z) already defined in Day2.obj
+C:\Users\SilvioCarrera\Documents\Cpp Projects\adventOfCode2020\Debug\AdventOfCode2020.exe : fatal error LNK1169: one or more multiply defined symbols found

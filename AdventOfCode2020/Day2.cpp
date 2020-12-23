@@ -1,7 +1,25 @@
 #include "day2.h"
+#include <iostream>// std::cout
+#include <fstream>
+#include <vector>
 
+using namespace std;
 
-int day2::run()
+void Day2::run(string inputPath)
 {
-	return 0;
+	//Read input and parse format "4-7 z: zzzfzlzzz"
+	vector<InputEntryInfo> entries;
+	fstream newfile;
+	newfile.open(inputPath, ios::in);
+	if (newfile.is_open())
+	{
+		string line;
+		while (getline(newfile, line))
+		{
+			auto entry = InputEntryInfo(line);
+			entries.push_back(entry);
+			cout << line << "\n";
+		}
+		newfile.close();
+	}
 }
