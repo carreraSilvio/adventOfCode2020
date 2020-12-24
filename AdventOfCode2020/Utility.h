@@ -1,5 +1,9 @@
-#include <ostream>
+#include <iostream>
+#include <fstream>
+#include <string>
 #include <vector>
+#include <utility>
+
 using namespace std;
 
 #pragma once
@@ -26,6 +30,30 @@ class Utility
 			result.push_back(leftSide);
 			result.push_back(rightSide);
 			return result;
+		}
+
+		static vector<std::string> splitAll(string value, char delimiter)
+		{
+			//vector<std::string> out;
+			//// construct a stream from the string
+			//fstream stream(value);
+
+			//string s;
+			//while (getline(stream, s, delimiter)) {
+			//	out.push_back(s);
+			//}
+			//return out;
+
+			vector<std::string> out;
+			std::string::size_type beg = 0;
+			for (auto end = 0; (end = value.find(delimiter, end)) != std::string::npos; ++end)
+			{
+				out.push_back(value.substr(beg, end - beg));
+				beg = end + 1;
+			}
+
+			out.push_back(value.substr(beg));
+			return out;
 		}
 
 		static int count_instances(string value, string target) {
