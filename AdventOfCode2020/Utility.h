@@ -42,10 +42,3 @@ class Utility
 		
 };
 
-//ostream& operator<<(ostream& ostr, const vector<int>& vector)
-//{
-//	for (auto& i : vector) {
-//		ostr << " " << i;
-//	}
-//	return ostr;
-//}

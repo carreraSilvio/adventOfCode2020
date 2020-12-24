@@ -14,14 +14,14 @@ int Day1::run()
 	//Read input data
 	vector<int> nums;
 	fstream newfile;
-	newfile.open("input.txt", ios::in);
+	newfile.open("day1_input.txt", ios::in);
 	if (newfile.is_open())
 	{
 		string line;
 		while (getline(newfile, line))
 		{
 			nums.push_back(stoi(line));
-			cout << line << "\n";
+			//cout << line << "\n";
 		}
 		newfile.close();
 	}
@@ -48,11 +48,19 @@ int Day1::run()
 		}
 
 		//Found valid numbers
-		cout << "upperValue " << upperValue << " targetLowerValue " << targetLowerValue << endl;
+		//cout << "upperValue " << upperValue << " targetLowerValue " << targetLowerValue << endl;
 		cout << "res " << upperValue * targetLowerValue << endl;
 		return upperValue * targetLowerValue;
 	}
 
 	cout << "res " << "not found.\n";
 	return 0;
+}
+
+ostream& operator<<(ostream& ostr, const vector<int>& vector)
+{
+	for (auto& i : vector) {
+		ostr << " " << i;
+	}
+	return ostr;
 }
