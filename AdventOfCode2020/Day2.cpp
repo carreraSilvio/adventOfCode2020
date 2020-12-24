@@ -16,10 +16,19 @@ void Day2::run(string inputPath)
 		string line;
 		while (getline(newfile, line))
 		{
+			cout << line << "\n";
 			auto entry = InputEntryInfo(line);
 			entries.push_back(entry);
-			cout << line << "\n";
 		}
 		newfile.close();
 	}
+
+	//Count valid
+	int countValid = 0;
+	for (auto entry : entries) {
+		if (entry.isValid) {
+			countValid++;
+		}
+	}
+	cout << "count valid " << countValid << endl;
 }

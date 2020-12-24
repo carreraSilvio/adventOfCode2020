@@ -16,6 +16,8 @@ public:
         int max = 0;//eg 7
         string target = "";//eg z
         string value = ""; //eg zzzfzlzzz
+        int total;
+        bool isValid;
 
         InputEntryInfo(string fullValue) {
 
@@ -32,11 +34,16 @@ public:
             target = leftSideSplitted[1];
             value = rightSide;
 
-            cout << "min is " << min << endl;
-            cout << "max is " << max << endl;
-            cout << "target is " << target << endl;
-            cout << "value is " << value << endl;
+            //cout << "min is " << min << endl;
+            //cout << "max is " << max << endl;
+            //cout << "target is " << target << endl;
+            //cout << "value is " << value << endl;
 
+            total = Utility::count_instances(value, target);
+            isValid = (total >= min) && (total <= max);
+            cout.setf(std::ios::boolalpha);
+            //cout << "total is " << total << endl;
+            //cout << "valid is " << valid << endl;
         }
     };
 };

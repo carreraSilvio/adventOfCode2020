@@ -14,7 +14,7 @@ int Day1::run()
 	//Read input data
 	vector<int> nums;
 	fstream newfile;
-	newfile.open("input2.txt", ios::in);
+	newfile.open("input.txt", ios::in);
 	if (newfile.is_open())
 	{
 		string line;
