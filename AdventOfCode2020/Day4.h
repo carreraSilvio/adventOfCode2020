@@ -44,9 +44,9 @@ public:
 
                 //Read all fields in current passport
 				cout << "line " << line << "\n";
-                auto entries = Utility::splitAll(line, ' ');
+                auto entries = Utils::splitAll(line, ' ');
                 for (auto entry : entries) {
-                    vector<string> entrySplit = Utility::splitAll(entry, ':');
+                    vector<string> entrySplit = Utils::splitAll(entry, ':');
                     cout << "field read is " << entrySplit[0] << endl;
                     passport.push_back(entrySplit[0]);
                 }
@@ -96,8 +96,8 @@ public:
             auto rightSide = fullValue.substr(delimeterIndex + 1, fullValue.length());
             rightSide.erase(remove(rightSide.begin(), rightSide.end(), ' '), rightSide.end());
 
-            vector<string> leftSideSplitted = Utility::split(leftSide, ' ');
-            vector<string> minMaxSplitted = Utility::split(leftSideSplitted[0], '-');
+            vector<string> leftSideSplitted = Utils::split(leftSide, ' ');
+            vector<string> minMaxSplitted = Utils::split(leftSideSplitted[0], '-');
 
             min = stoi(minMaxSplitted[0]);
             max = stoi(minMaxSplitted[1]);
@@ -109,7 +109,7 @@ public:
             //cout << "target is " << target << endl;
             //cout << "value is " << value << endl;
 
-            total = Utility::count_instances(value, target);
+            total = Utils::count_instances(value, target);
             isValid = (total >= min) && (total <= max);
             cout.setf(std::ios::boolalpha);
             //cout << "total is " << total << endl;

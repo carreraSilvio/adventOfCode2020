@@ -1,6 +1,6 @@
 #include <iostream>// std::cout
 #include <string>
-#include "Utility.h"
+#include "Utils.h"
 
 using namespace std;
 
@@ -26,8 +26,8 @@ public:
             auto rightSide = fullValue.substr(delimeterIndex+1, fullValue.length());
             rightSide.erase(remove(rightSide.begin(), rightSide.end(), ' '), rightSide.end());
 
-            vector<string> leftSideSplitted = Utility::split(leftSide, ' ');
-            vector<string> minMaxSplitted = Utility::split(leftSideSplitted[0], '-');
+            vector<string> leftSideSplitted = Utils::split(leftSide, ' ');
+            vector<string> minMaxSplitted = Utils::split(leftSideSplitted[0], '-');
 
             min = stoi(minMaxSplitted[0]);
             max = stoi(minMaxSplitted[1]);
@@ -39,7 +39,7 @@ public:
             //cout << "target is " << target << endl;
             //cout << "value is " << value << endl;
 
-            total = Utility::count_instances(value, target);
+            total = Utils::count_instances(value, target);
             isValid = (total >= min) && (total <= max);
             cout.setf(std::ios::boolalpha);
             //cout << "total is " << total << endl;

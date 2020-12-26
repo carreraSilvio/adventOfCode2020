@@ -7,7 +7,7 @@
 using namespace std;
 
 #pragma once
-class Utility
+class Utils
 {
 	public:
 		
