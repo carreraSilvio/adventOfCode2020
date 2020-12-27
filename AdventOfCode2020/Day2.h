@@ -26,8 +26,8 @@ public:
             auto rightSide = fullValue.substr(delimeterIndex+1, fullValue.length());
             rightSide.erase(remove(rightSide.begin(), rightSide.end(), ' '), rightSide.end());
 
-            vector<string> leftSideSplitted = Utils::split(leftSide, ' ');
-            vector<string> minMaxSplitted = Utils::split(leftSideSplitted[0], '-');
+            vector<string> leftSideSplitted = Utils::divide(leftSide, ' ');
+            vector<string> minMaxSplitted = Utils::divide(leftSideSplitted[0], '-');
 
             min = stoi(minMaxSplitted[0]);
             max = stoi(minMaxSplitted[1]);

@@ -29,7 +29,7 @@ class Utils
 			return !s.empty() && it == s.end();
 		}
 
-		static vector<string> split(string value, char delimiter) {
+		static vector<string> divide(string value, char delimiter) {
 			std::size_t delimeterIndex = value.find_first_of(delimiter);
 			auto leftSide = value.substr(0, delimeterIndex);
 			auto rightSide = value.substr(delimeterIndex+1, value.length());
