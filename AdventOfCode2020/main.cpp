@@ -50,8 +50,8 @@ int main()
 
 	cout << "Day 9" << endl;
 	Day9 day9;
-	//day9.run("day9_input_dummy.txt");
-	day9.run("day9_input.txt");
+	day9.run("day9_input_dummy.txt");
+	//day9.run("day9_input.txt");
 
 	return 0;
 }

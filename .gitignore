@@ -32,15 +32,18 @@
 *.app
 
 # Added
-*.tlog
-*.log
-*.recipe
-*.db
-*.db-shm
-*.db-wal
-*.db-opendb
-*.suo
-*.lastbuildstate
-*.idb
-*.pdb
-*.ilk
+/**/*.tlog
+/**/*.log
+/**/*.recipe
+/**/*.db
+/**/*.db-shm
+/**/*.db-wal
+/**/*.db-opendb
+/**/*.suo
+/**/*.lastbuildstate
+/**/*.idb
+/**/*.pdb
+/**/*.ilk
+/**/*.vcxproj
+/**/*.vcxproj.filters
+/**/*.ipch

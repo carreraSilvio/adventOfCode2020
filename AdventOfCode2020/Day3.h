@@ -10,7 +10,8 @@ using namespace std;
 class Day3
 {
 public:
-	void run(string inputPath) {
+	void run(string inputPath) 
+	{
 
 		//Read input, parse and calc solution
 		char tree = '#';
