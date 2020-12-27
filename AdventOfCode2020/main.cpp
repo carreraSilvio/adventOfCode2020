@@ -5,6 +5,7 @@
 #include "Day4.h"
 #include "Day5.h"
 #include "Day6.h"
+#include "Day7.h"
 
 using namespace std;
 
@@ -32,9 +33,13 @@ int main()
 	//Day5 day5;
 	//day5.run("day5_input.txt");
 
-	cout << "Day 6" << endl;
-	Day6 day6;
-	day6.run("day6_input.txt");
+	//cout << "Day 6" << endl;
+	//Day6 day6;
+	//day6.run("day6_input.txt");
+
+	cout << "Day 7" << endl;
+	Day7 day7;
+	day7.run("day7_input.txt");
 
 	return 0;
 }

@@ -22,6 +22,13 @@ class Utils
 			}
 		}
 
+		static bool is_number(const std::string& s)
+		{
+			std::string::const_iterator it = s.begin();
+			while (it != s.end() && std::isdigit(*it)) ++it;
+			return !s.empty() && it == s.end();
+		}
+
 		static vector<string> split(string value, char delimiter) {
 			std::size_t delimeterIndex = value.find_first_of(delimiter);
 			auto leftSide = value.substr(0, delimeterIndex);
@@ -32,18 +39,44 @@ class Utils
 			return result;
 		}
 
+		static vector<string> split_by_string(string value, string delimiter) {
+			size_t delimeterIndex = value.find(delimiter);
+			auto leftSide = value.substr(0, delimeterIndex);
+			auto rightSide = value.substr(delimeterIndex + delimiter.length(), value.length());
+			vector<string> result;
+			result.push_back(leftSide);
+			result.push_back(rightSide);
+			return result;
+		}
+
+		static bool contains_string(string value, string target) {
+			size_t targetIndex = value.find(target);
+			return targetIndex != string::npos;
+		}
+
+		static void trim_whitespace(string& s)
+		{
+			size_t p = s.find_first_not_of(" \t");
+			s.erase(0, p);
+
+			p = s.find_last_not_of(" \t");
+			if (string::npos != p)
+				s.erase(p + 1);
+		}
+
+		static string find_and_replace(string value, string target, string substitute) {
+			size_t targetIndex = value.find(target);
+			bool targetFound = targetIndex != string::npos;
+			if (!targetFound) {
+				return value;
+			}
+
+			value.replace(targetIndex, targetIndex + target.size(), substitute);
+			return value;
+		}
+
 		static vector<std::string> splitAll(string value, char delimiter)
 		{
-			//vector<std::string> out;
-			//// construct a stream from the string
-			//fstream stream(value);
-
-			//string s;
-			//while (getline(stream, s, delimiter)) {
-			//	out.push_back(s);
-			//}
-			//return out;
-
 			vector<std::string> out;
 			std::string::size_type beg = 0;
 			for (auto end = 0; (end = value.find(delimiter, end)) != std::string::npos; ++end)
