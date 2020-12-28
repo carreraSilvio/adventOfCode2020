@@ -47,3 +47,7 @@
 /**/*.vcxproj
 /**/*.vcxproj.filters
 /**/*.ipch
+/**/*.enc
+/**/*.lastbuildstate
+/[Dd]ebug/
+/.vs/
