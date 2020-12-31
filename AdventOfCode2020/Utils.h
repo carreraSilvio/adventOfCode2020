@@ -9,8 +9,7 @@ using namespace std;
 #pragma once
 class Utils
 {
-	public:
-		
+public:
 		static int binary_search_find_index(vector<int> v, int target) {
 			auto it = lower_bound(v.begin(), v.end(), target);
 			if (it == v.end() || *it != target) {
@@ -99,12 +98,37 @@ class Utils
 			}
 			return total;
 		}
+
 		
 		
 };
 
 
 ostream& operator<<(ostream& ostr, const vector<int>& vector)
+{
+	for (auto& i : vector) {
+		ostr << " " << i;
+	}
+	return ostr;
+}
+
+ostream& operator<<(ostream& ostr, const vector<string>& vector)
+{
+	for (auto& i : vector) {
+		ostr << " " << i;
+	}
+	return ostr;
+}
+
+ostream& operator<<(ostream& ostr, const vector<long>& vector)
+{
+	for (auto& i : vector) {
+		ostr << " " << i;
+	}
+	return ostr;
+}
+
+ostream& operator<<(ostream& ostr, const vector<char>& vector)
 {
 	for (auto& i : vector) {
 		ostr << " " << i;
