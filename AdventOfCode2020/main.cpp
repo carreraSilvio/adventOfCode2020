@@ -68,8 +68,8 @@ int main()
 
 	cout << "Day 12" << endl;
 	Day12 day12;
-	day12.run("day12_input_dummy.txt");
-	//day12.run("day12_input.txt");
+	//day12.run("day12_input_dummy.txt");
+	day12.run("day12_input.txt");
 
 	return 0;
 }
