@@ -13,6 +13,7 @@
 #include "Day12.h"
 #include "Day13.h"
 #include "Day14.h"
+#include "Day15.h"
 
 using namespace std;
 
@@ -78,10 +79,15 @@ int main()
 	//day13.run("day13_input_dummy.txt");
 	//day13.run("day13_input.txt");
 
-	cout << "Day 14" << endl;
-	Day14 day14;
+	//cout << "Day 14" << endl;
+	//Day14 day14;
 	//day14.run("day14_input_dummy.txt");
-	day14.run("day14_input.txt");
+	//day14.run("day14_input.txt");
+
+	cout << "Day 15" << endl;
+	Day15 day15;
+	//day15.run("day15_input_dummy.txt");
+	day15.run("day15_input.txt");
 
 
 	return 0;
