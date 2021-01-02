@@ -37,10 +37,18 @@ public:
         }
     };
 
+
     void run(string inputPath)
     {
+        //consts
+        const int STATE_RANGES = 0;
+        const int STATE_USER_TICKET = 1;
+        const int STATE_NEARBY_TICKET = 2;
+
         //Vars
         vector<RangeInt> allFieldRanges;
+        vector<vector<int>> nearbyTickets;
+        int state = STATE_RANGES;
 
         //Extract nums and put them in a vector
         fstream newfile;
@@ -49,16 +57,26 @@ public:
         {
             string line;
             int lineId = 0;
-            bool readingTickets = false;
             while (getline(newfile, line))
             {
-                if (Utils::contains_string(line, "nearby tickets:"))
+                if (line.empty())
                 {
-                    readingTickets = true;
                     continue;
                 }
 
-                if (!readingTickets)
+                if (Utils::contains_string(line, "nearby tickets:"))
+                {
+                    state = STATE_NEARBY_TICKET;
+                    continue;
+                }
+
+                if (Utils::contains_string(line, "your ticket:"))
+                {
+                    state = STATE_NEARBY_TICKET;
+                    continue;
+                }
+
+                if (state == STATE_RANGES)
                 {
                     string rightSide = Utils::splitAll(line, ':').at(1);
                     auto ranges = ExtractRanges(rightSide);
@@ -67,10 +85,52 @@ public:
                         allFieldRanges.push_back(range);
                     }
                 }
+                else if (state == STATE_USER_TICKET)
+                {
+                    //NA continue
+                }
+                else if (state == STATE_NEARBY_TICKET)
+                {
+                    vector<string> lineSplit = Utils::splitAll(line, ',');
+                    vector<int> nearbyTicket;
+                    for (auto num : lineSplit)
+                    {
+                        nearbyTicket.push_back(stoi(num));
+                    }
+                    nearbyTickets.push_back(nearbyTicket);
+                }
+
                 //cout << lineId << " line " << line << endl;
                 lineId++;
             }
         }
+
+        //Sum invalid values
+        unsigned long long sum = 0;
+        bool invalid = true;
+        for (auto nearbyTicket : nearbyTickets)
+        {
+            for (auto value : nearbyTicket)
+            {
+                invalid = true;
+                for (auto range : allFieldRanges)
+                {
+                    if (range.IsInRange(value))
+                    {
+                        invalid = false;
+                        break;
+                    }
+                }
+
+                if (invalid)
+                {
+                    sum += value;
+                }
+            }
+        }
+
+        //Show answer
+        cout << "resp is " << sum << endl;
     }
 
     vector<RangeInt> ExtractRanges(string line)
@@ -84,15 +144,18 @@ public:
             {
                 continue;
             }
+            if (entry.empty())
+            {
+                continue;
+            }
 
             auto rangeVals = Utils::splitAll(entry, '-');
-            ranges.push_back(
-                RangeInt(
-                    stoi(rangeVals.at(0)),
-                    stoi(rangeVals.at(1))
-                )
-            );
+            auto min = stoi(rangeVals.at(0));
+            auto max = stoi(rangeVals.at(1));
+            ranges.push_back(RangeInt(min,max));
         }
+
+        return ranges;
     }
 };
 

@@ -28,7 +28,7 @@ public:
                 //Each line is a bag relation description
                 //cout << "line " << line << "\n";
 
-                vector<string> lineSplit = Utils::split_by_string(line, "contain");
+                vector<string> lineSplit = Utils::divide_by_string(line, "contain");
                 string parentData = lineSplit[0];
                 string childrenData = lineSplit[1];
 

@@ -92,8 +92,8 @@ int main()
 
 	cout << "Day 16" << endl;
 	Day16 day16;
-	day16.run("day16_input_dummy.txt");
-	//day16.run("day16_input.txt");
+	//day16.run("day16_input_dummy.txt");
+	day16.run("day16_input.txt");
 
 
 	return 0;
