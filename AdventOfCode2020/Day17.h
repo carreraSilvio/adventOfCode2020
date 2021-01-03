@@ -102,6 +102,7 @@ public:
                 {
                     bool isActive = (entry == '#');
                     matrix.at(inputCord) = isActive;
+
                     inputCord.x++; 
                 }
                 inputCord.y++;
@@ -110,7 +111,6 @@ public:
                 lineId++;
             }
         }
-        //PrintMatrix();
 
         //Run cycles
         int cycle = 1;
@@ -120,7 +120,7 @@ public:
             cout << "Cycle " << cycle << endl;
 
             //Mark all that will change
-            cout << "#Mark to change " << cycle << endl;
+            cout << "#Mark to change " << endl;
             markedToChange.clear();
             for (const auto& cube : matrix)
             {
@@ -142,6 +142,8 @@ public:
             for (const auto& coord : markedToChange)
             {
                 matrix.at(coord) = !matrix.at(coord); //flip the value
+
+                bool isActive = matrix.at(coord);
             }
 
             //PrintMatrix();
@@ -149,7 +151,6 @@ public:
         }
 
         //Count active cubes
-        //PrintMatrix();
         int totalActiveCubes = 0;
         for (int z = 0; z < MATRIX_SIZE; z++)
         {
