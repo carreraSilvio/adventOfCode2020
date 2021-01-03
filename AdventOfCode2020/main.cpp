@@ -17,12 +17,14 @@
 #include "Day15.h"
 #include "Day16.h"
 #include "Day17.h"
+#include "Day18.h"
 
 using namespace std;
 
 int main()
 {
 	cout.setf(std::ios::boolalpha);
+	chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
 
 	//cout << "Day 1" << endl;
 	//Day1 day1;
@@ -97,19 +99,18 @@ int main()
 	//day16.run("day16_input_dummy.txt");
 	//day16.run("day16_input.txt");
 
-	cout << "Day 17" << endl;
-	Day17 day17;
+	//cout << "Day 17" << endl;
+	//Day17 day17;
 	//day17.run("day17_input_dummy.txt"); 
-	day17.run("day17_input.txt");
+	//day17.run("day17_input.txt");
 
+	cout << "Day 18" << endl;
+	Day18 day18;
+	day18.run("day18_input_dummy.txt"); 
+	//day18.run("day18_input.txt");
 
-
-	//std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
-	//std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-
-	//std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << "[µs]" << std::endl;
-	//std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "[ns]" << std::endl;
-
+	chrono::steady_clock::time_point end = chrono::steady_clock::now();
+	cout << "Time taken = " << chrono::duration_cast<chrono::nanoseconds> (end - begin).count() << "[ns]" << endl;
 
 	return 0;
 }
