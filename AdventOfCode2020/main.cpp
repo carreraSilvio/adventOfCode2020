@@ -1,4 +1,5 @@
 #include <iostream>
+#include <chrono>
 #include "Day1.h"
 #include "Day2.h"
 #include "Day3.h"
@@ -87,7 +88,7 @@ int main()
 	//day14.run("day14_input.txt");
 
 	//cout << "Day 15" << endl;
-	Day15 day15;
+	//Day15 day15;
 	//day15.run("day15_input_dummy.txt");
 	//day15.run("day15_input.txt");
 
@@ -98,8 +99,16 @@ int main()
 
 	cout << "Day 17" << endl;
 	Day17 day17;
-	day17.run("day17_input_dummy.txt"); 
-	//day17.run("day17_input.txt");
+	//day17.run("day17_input_dummy.txt"); 
+	day17.run("day17_input.txt");
+
+
+
+	//std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+	//std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+
+	//std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << "[µs]" << std::endl;
+	//std::cout << "Time difference = " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "[ns]" << std::endl;
 
 
 	return 0;
