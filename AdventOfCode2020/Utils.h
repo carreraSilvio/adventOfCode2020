@@ -63,6 +63,16 @@ public:
 				s.erase(p + 1);
 		}
 
+		static void trim_all_whitespace(string& s)
+		{
+			size_t p = s.find_first_not_of(" \n\r\t");
+			s.erase(0, p);
+
+			p = s.find_last_not_of(" \n\r\t");
+			if (string::npos != p)
+				s.erase(p + 1);
+		}
+
 		static string find_and_replace(string value, string target, string substitute) {
 			size_t targetIndex = value.find(target);
 			bool targetFound = targetIndex != string::npos;
