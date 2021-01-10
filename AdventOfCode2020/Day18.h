@@ -14,49 +14,7 @@
 class Day18
 {
 public:
-    class Operation
-    {
-    public:
-        int _left;
-        Operation* _right;
-        char _operator;
-
-        const char OPERATOR_SUM = '+';
-        const char OPERATOR_MULT = '*';
-
-        Operation(int left)
-        {
-            this->_left = left;
-            this->_operator = ' ';
-            this->_right = NULL;
-        }
-
-        Operation(int left, char _operator, Operation right)
-        {
-            this->_left = left;
-            this->_operator = _operator;
-            this->_right = &right;
-        }
-
-        int GetResult() 
-        {
-            if (this->_right == NULL) 
-            {
-                return _left;
-            }
-            else
-            {
-                if (_operator == OPERATOR_SUM)
-                {
-                    return _left + _right->GetResult();
-                }
-                else if (_operator == OPERATOR_MULT)
-                {
-                    return _left * _right->GetResult();
-                }
-            }
-        }
-    };
+   
     void run(string inputPath)
     {
         //Vars
