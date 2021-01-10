@@ -15,11 +15,25 @@ class Day19
 {
 public:
 
+    class Node
+    {
+    public:
+        vector<string> subNodes;
+        Node(vector<string> values) {
+            for (auto value : values)
+            {
+                subNodes.push_back(value);
+            }
+        }
+    };
+
     void run(string inputPath)
     {
         //Vars
-        map<int, string> rules;
+        map<int, Node> rules;
         vector<string> messages;
+        vector<string> validMessages;
+        string ruleZero = " ";
 
         //Open file
         fstream newfile;
@@ -33,7 +47,6 @@ public:
         string line;
         int lineId = 0;
         bool extractingRules = true;
-        
 
         while (getline(newfile, line))
         {
@@ -42,21 +55,78 @@ public:
                 extractingRules = false;
                 continue;
             }
-
-            for (auto entry : line)
+            
+            if (extractingRules)
             {
-                if (extractingRules)
+                auto lineSplit = Utils::divide(line, ':');
+
+                if (ruleZero == " ")
                 {
-                    auto lineSplit = Utils::divide(line, ':');
-                    rules.insert(pair<int, string>(stoi(lineSplit.at(0)), lineSplit.at(1)));
+                    ruleZero = lineSplit.at(1);
+                }
+                else
+                {
+                    auto key = stoi(lineSplit.at(0));
+                    auto values = lineSplit.at(1);
+                    auto valuesSplit = Utils::splitAll(values, ':');
+                    Node node = Node(valuesSplit);
+                    
+                
+                    rules.insert(pair<int, Node>(key, node);
                 }
             }
+            else
+            {
+                messages.push_back(line);
+            }
+            
             //cout << lineId << " line " << line << endl;
             lineId++;
         }
 
-        //Sum all result
-        cout << "resultSum is " << resultSum << endl;
+        //Find all valid messages for rule 0
+        while (true)
+        {
+            string validMessage = " ";
+            for (auto entry : ruleZero)
+            {
+                if (entry == ' ')
+                {
+                    continue;
+                }
+
+                if (entry == 'a' || entry == 'b')
+                {
+                    validMessage.push_back(entry);
+                    continue;
+                }
+            }
+            validMessages.push_back(validMessage);
+        };
+        
+
+        //Count all messages that match the valid messages
+        int rightMessages = 0;
+
+        for (auto message : messages)
+        {
+            for (auto validMessage : validMessages)
+            {
+                if (message.length() != validMessage.length())
+                {
+                    continue;
+                }
+
+                if (message.compare(validMessage))
+                {
+                    rightMessages++;
+                    break;
+                }
+            }
+        }
+
+        //Show result
+        cout << "rightMessages is " << rightMessages << endl;
 
     }
 };

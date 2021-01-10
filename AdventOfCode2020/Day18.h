@@ -20,6 +20,7 @@ public:
         //Vars
         queue<char> tokenQueue;
         long long resultSum = 0;
+        
 
         //Open file
         fstream newfile;
