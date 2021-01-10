@@ -18,6 +18,7 @@
 #include "Day16.h"
 #include "Day17.h"
 #include "Day18.h"
+#include "Day19.h"
 
 using namespace std;
 
@@ -104,10 +105,15 @@ int main()
 	//day17.run("day17_input_dummy.txt"); 
 	//day17.run("day17_input.txt");
 
-	cout << "Day 18" << endl;
-	Day18 day18;
+	//cout << "Day 18" << endl;
+	//Day18 day18;
 	//day18.run("day18_input_dummy.txt"); 
-	day18.run("day18_input.txt");
+	//day18.run("day18_input.txt");
+
+	cout << "Day 19" << endl;
+	Day19 day19;
+	day19.run("day19_input_dummy.txt"); 
+	//day19.run("day19_input.txt");
 
 	chrono::steady_clock::time_point end = chrono::steady_clock::now();
 	cout << "Time taken = " << chrono::duration_cast<chrono::milliseconds> (end - begin).count() << "[ms]" << endl;
