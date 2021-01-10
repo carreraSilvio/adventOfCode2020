@@ -65,12 +65,11 @@ public:
 
 		static void trim_all_whitespace(string& s)
 		{
-			size_t p = s.find_first_not_of(" \n\r\t");
-			s.erase(0, p);
 
-			p = s.find_last_not_of(" \n\r\t");
-			if (string::npos != p)
-				s.erase(p + 1);
+			for (auto end = 0; (end = s.find(" ", end)) != string::npos; ++end)
+			{
+				s.replace(end, end, "");
+			}
 		}
 
 		static string find_and_replace(string value, string target, string substitute) {
@@ -88,7 +87,7 @@ public:
 		{
 			vector<std::string> out;
 			std::string::size_type beg = 0;
-			for (auto end = 0; (end = value.find(delimiter, end)) != std::string::npos; ++end)
+			for (auto end = 0; (end = value.find(delimiter, end)) != string::npos; ++end)
 			{
 				out.push_back(value.substr(beg, end - beg));
 				beg = end + 1;

@@ -61,7 +61,7 @@ public:
     {
         //Vars
         queue<char> tokenQueue;
-        int parenthesesDepth;
+        long long resultSum = 0;
 
         //Open file
         fstream newfile;
@@ -79,70 +79,114 @@ public:
         while (getline(newfile, line))
         {
             sum = 0;
-            line = "1 + 2";
-            line.erase(line.find_last_not_of(" \n\r\t") + 1);
             for (auto entry : line)
             {
-                if (entry == 0)
+                if (entry == ' ')
                 {
                     continue;
                 }
                 tokenQueue.push(entry);
             }
-            cout << "result is " << CalculateOperation(tokenQueue) << endl;;
-            
+            auto result = CalculateExpression(tokenQueue);
+            resultSum += result;
+            cout << "result is " << result << endl;
 
             //cout << lineId << " line " << line << endl;
             lineId++;
         }
 
-        //Dummy eg. 1 + 2
-        //Dummy eg. 1 + (2 * 3) + (4 * (5 + 6))
-        //char left = '2';
-        //Operation b = Operation(atoi(&left));
-        //left = '1';
-        //Operation a = Operation(atoi(&left), '+', b);
-        //
-        //cout << "result is " << a.GetResult() << endl;;
-
-        
-       
+        //Sum all result
+        cout << "resultSum is " << resultSum << endl;
 
     }
 
-
-    int CalculateOperation(queue<char>& queue)
+    int FetchPrecedence(char c)
     {
-        if (queue.empty())
+        if (c == '+' || c == '*')
         {
-            return 0;
+            return 1;
         }
 
-        char _left = queue.front();
-        queue.pop();
-        char _operator = queue.front();
-        queue.pop();
-        char _right = queue.front();
-        queue.pop();
-
-        if (!isdigit(_right))
-        {
-            return ProcessOperation(_left, _operator, CalculateOperation(queue));
-        }
-
-        return ProcessOperation(_left, _operator, _right) + CalculateOperation(queue);
+        return 0;
     }
 
-    int ProcessOperation(char _left, char _operator, char _right)
+    long long CalculateExpression(queue<char>& expression)
     {
-        if (_operator == '+')
+        vector<char> postfixNotation;
+        stack<char> postfixStack ;
+
+        while(!expression.empty())
         {
-            return atoi(&_left) + atoi(&_right);
+            auto c = expression.front();
+            expression.pop();
+
+            if (isdigit(c))
+            {
+                postfixNotation.push_back(c);
+            }
+            else if (c == '(')
+            {
+                postfixStack.push(c);
+            }
+            else if (c == ')')
+            {
+                while (postfixStack.size() > 0 && postfixStack.top() != '(')
+                {
+                    postfixNotation.push_back(postfixStack.top());
+                    postfixStack.pop();
+                }
+
+                if (postfixStack.size() > 0)
+                {
+                    postfixStack.pop();
+                }
+            }
+            else
+            {
+                while (postfixStack.size() > 0 && FetchPrecedence(c) <= FetchPrecedence(postfixStack.top()))
+                {
+                    postfixNotation.push_back(postfixStack.top());
+                    postfixStack.pop();
+                }
+
+                postfixStack.push(c);
+            }
         }
-        else if (_operator == '*')
+
+        while (postfixStack.size() > 0)
         {
-            return atoi(&_left) * atoi(&_right);
+            postfixNotation.push_back(postfixStack.top());
+            postfixStack.pop();
         }
+
+        stack<long long> expressionStack;
+
+        for(char c : postfixNotation)
+        {
+            if (isdigit(c))
+            {
+                expressionStack.push(atoll(&c));
+            }
+            else
+            {
+                long long a = expressionStack.top();
+                expressionStack.pop();
+                long long b = expressionStack.top();
+                expressionStack.pop();
+
+                if (c == '+')
+                {
+                    expressionStack.push(a + b);
+                }
+                else if (c == '*')
+                {
+                    expressionStack.push(a * b);
+                }
+            }
+        }
+
+        return expressionStack.top();
     }
+  
 };
 

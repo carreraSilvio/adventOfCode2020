@@ -106,11 +106,11 @@ int main()
 
 	cout << "Day 18" << endl;
 	Day18 day18;
-	day18.run("day18_input_dummy.txt"); 
-	//day18.run("day18_input.txt");
+	//day18.run("day18_input_dummy.txt"); 
+	day18.run("day18_input.txt");
 
 	chrono::steady_clock::time_point end = chrono::steady_clock::now();
-	cout << "Time taken = " << chrono::duration_cast<chrono::nanoseconds> (end - begin).count() << "[ns]" << endl;
+	cout << "Time taken = " << chrono::duration_cast<chrono::milliseconds> (end - begin).count() << "[ms]" << endl;
 
 	return 0;
 }
