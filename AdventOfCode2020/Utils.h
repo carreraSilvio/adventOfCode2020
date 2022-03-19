@@ -41,7 +41,7 @@ public:
 		static vector<string> divide_by_string(string value, string delimiter) {
 			size_t delimeterIndex = value.find(delimiter);
 			auto leftSide = value.substr(0, delimeterIndex);
-			auto rightSide = value.substr(delimeterIndex + delimiter.length(), value.length());
+			auto rightSide = value.substr(delimeterIndex + delimiter.length(), value.length() - 1);
 			vector<string> result;
 			result.push_back(leftSide);
 			result.push_back(rightSide);
